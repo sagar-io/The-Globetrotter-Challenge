@@ -1,0 +1,88 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logoLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.logoLink:hover {
+    transform: scale(1.05);
+}
+
+.logoText {
+    font-size: 3rem;
+    color: white;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+.leftSection, .rightSection {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.leftSection {
+    justify-content: flex-start;
+}
+
+.centerSection {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightSection {
+    justify-content: flex-end;
+}
+
+.challengeButton {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+.challengeButton:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.challengeButton:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .challengeButton {
+        padding: 0.6rem 1rem;
+        font-size: 0.875rem;
+    }
+} 

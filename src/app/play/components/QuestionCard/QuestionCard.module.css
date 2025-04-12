@@ -1,0 +1,144 @@
+.questionCard {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    max-width: 800px;
+    width: 100%;
+    animation: slideUp 0.3s ease-out;
+    margin-left: -12.5rem;
+}
+
+.cluesContainer {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.question {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.cluesList {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.clue {
+    margin-top: 1rem;
+    background-color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--primary);
+}
+
+.clue h3 {
+    font-weight: normal;
+    margin-top: 0.4rem;
+}
+
+.optionsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.optionButton {
+    background-color: white;
+    border: 2px solid var(--bg-secondary);
+    border-radius: var(--border-radius);
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    font-weight: 500;
+}
+
+.optionButton:hover:not(:disabled) {
+    background-color: var(--primary-light);
+    border-color: var(--primary-light);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.optionButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.correctAnswer {
+    background-color: var(--success);
+    border-color: var(--success);
+    color: white;
+}
+
+.incorrectAnswer {
+    background-color: var(--error);
+    border-color: var(--error);
+    color: white;
+}
+
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.loadingImage {
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.loadingText {
+    color: white;    
+    font-size: 1.4rem;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .questionCard {
+        padding: 1.5rem;
+        margin: 1rem;
+        width: calc(100% - 2rem);
+    }
+
+    .question {
+        font-size: 1.5rem;
+    }
+
+    .optionsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .cluesList {
+        grid-template-columns: 1fr;
+    }
+} 
