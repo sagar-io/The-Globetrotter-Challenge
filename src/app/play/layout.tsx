@@ -2,8 +2,10 @@ import { Metadata } from 'next';
 import clientPromise from '@/lib/mongodb';
 import { DATABASE_NAME, COLLECTIONS } from '@/lib/constants';
 
-export async function generateMetadata({ searchParams }: { searchParams: { challengeBy?: string } }): Promise<Metadata> {
-    const challengeBy = searchParams?.challengeBy;
+type Params = Promise<{ slug: string }>
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+    const searchParams = await params;
+    const challengeBy = searchParams?.slug;
     
     if (!challengeBy) {
         return {

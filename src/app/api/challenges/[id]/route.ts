@@ -1,11 +1,14 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '@/lib/mongodb';
 import { DATABASE_NAME, COLLECTIONS } from '@/lib/constants';
 
+type Params = Promise<{ id: string }>
+
 export async function GET(
-    request: Request,
-    { params }: { params: { id: string } }
+    _request: NextRequest,
+    segmentData: { params: Params }
 ) {
+    const params = await segmentData.params
     try {
         const client = await clientPromise;
         const db = client.db(DATABASE_NAME);
