@@ -9,13 +9,6 @@ export async function GET(request: Request) {
         const correct = parseInt(searchParams.get('correct') || '0');
         const total = parseInt(searchParams.get('total') || '0');
 
-        console.log('Generating OG Image:', {
-            username,
-            correct,
-            total,
-            baseUrl: process.env.NEXT_PUBLIC_BASE_URL
-        });
-
         return new ImageResponse(
             (
                 <div

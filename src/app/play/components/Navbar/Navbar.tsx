@@ -17,7 +17,6 @@ interface NavbarProps {
 }
 
 export function Navbar({ score }: NavbarProps) {
-    console.log("score", score);
     const { user } = useUser();
     const [isShareModalOpen, setIsShareModalOpen] = useState(false);
     const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);

@@ -25,9 +25,6 @@ export default function Play() {
     const { user } = useUser();
     const searchParams = useSearchParams();
     const challengeId = searchParams.get('challengeBy');
-
-    console.log("gameState", gameState);
-    console.log("user", user);
     
     useEffect(() => {
         const loadChallenge = async () => {
@@ -161,7 +158,6 @@ export default function Play() {
         fetchQuestion();
     }, []);
 
-    console.log("gameState my", gameState.loading);
     const isAnswered = Boolean(gameState.selectedAnswer);
 
     return (

@@ -6,8 +6,6 @@ import { DATABASE_NAME, COLLECTIONS } from '@/lib/constants';
 export async function POST(request: Request) {
   try {
     const { questionId, answer } = await request.json();
-    console.log("questionId", questionId);
-    console.log("answer", answer);
     const client = await clientPromise;
     const db = client.db(DATABASE_NAME);
     

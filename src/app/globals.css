@@ -1,29 +1,23 @@
 :root {
-  /* Primary Colors */
-  --primary-dark: #1a365d;  /* Deep blue */
-  --primary: #2b6cb0;       /* Royal blue */
-  --primary-light: #4299e1; /* Light blue */
+  --primary-dark: #1a365d;
+  --primary: #2b6cb0;
+  --primary-light: #4299e1;
 
-  /* Secondary Colors */
-  --secondary: #38b2ac;     /* Teal */
-  --accent: #f6ad55;        /* Orange */
+  --secondary: #38b2ac;     
+  --accent: #f6ad55;       
 
-  /* Background Colors */
-  --bg-primary: #f7fafc;    /* Light gray-blue */
-  --bg-secondary: #edf2f7;  /* Lighter gray */
-  --bg-card: #ffffff;       /* White */
+  --bg-primary: #f7fafc;    
+  --bg-secondary: #edf2f7;  
+  --bg-card: #ffffff;       
 
-  /* Text Colors */
-  --text-primary: #2d3748;  /* Dark gray-blue */
-  --text-secondary: #4a5568;/* Medium gray */
-  --text-light: #718096;    /* Light gray */
+  --text-primary: #2d3748;  
+  --text-secondary: #4a5568;
+  --text-light: #718096;    
 
-  /* Success/Error Colors */
-  --success: #48bb78;       /* Green */
-  --error: #f56565;         /* Red */
-  --warning: #ecc94b;       /* Yellow */
+  --success: #48bb78;       
+  --error: #f56565;         
+  --warning: #ecc94b;       
 
-  /* UI Elements */
   --border-radius: 12px;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
   --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
@@ -45,7 +39,6 @@ body {
   font-family: var(--font-fredoka), system-ui, -apple-system, sans-serif;
 }
 
-/* Modern Button Styles */
 .button {
   background-color: var(--primary);
   color: white;
@@ -64,7 +57,6 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* Card Styles */
 .card {
   background-color: var(--bg-card);
   border-radius: var(--border-radius);
@@ -72,7 +64,6 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* Animation Classes */
 .fadeIn {
   animation: fadeIn 0.3s ease-in;
 }

@@ -80,12 +80,7 @@ export function ShareModal({ onClose, username, score }: ShareModalProps) {
             console.error('Failed to copy link:', error);
         }
     };
-    
-    console.log("Debug Share Modal:");
-    console.log("Base URL:", baseUrl);
-    console.log("Image URL:", imageUrl);
-    console.log("Environment:", process.env.NODE_ENV);
-    
+
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
