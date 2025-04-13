@@ -16,6 +16,11 @@ export function ScoreCard({ correctAnswers, incorrectAnswers, totalScore }: Scor
     const circumference = 2 * Math.PI * radius;
     const offset = circumference - (successRate / 100) * circumference;
 
+    const circleStyle = {
+        '--circumference': `${circumference}px`,
+        '--offset': `${offset}px`
+    } as React.CSSProperties;
+
     return (
         <div className={styles.scoreCard}>
             <div className={styles.scoreBoxes}>
@@ -36,7 +41,7 @@ export function ScoreCard({ correctAnswers, incorrectAnswers, totalScore }: Scor
 
                 <div className={styles.successBox}>
                     <div className={styles.circleProgress}>
-                        <svg width="120" height="120" viewBox="0 0 120 120">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style={circleStyle}>
                             <circle
                                 className={styles.circleBackground}
                                 cx="60"
@@ -53,7 +58,6 @@ export function ScoreCard({ correctAnswers, incorrectAnswers, totalScore }: Scor
                                 fill="none"
                                 strokeWidth="8"
                                 strokeDasharray={circumference}
-                                strokeDashoffset={offset}
                                 transform="rotate(-90 60 60)"
                             />
                             <text

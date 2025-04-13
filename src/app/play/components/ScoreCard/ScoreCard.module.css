@@ -12,6 +12,37 @@
     gap: 1rem;
 }
 
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes drawCircle {
+    from {
+        stroke-dashoffset: var(--circumference);
+    }
+    to {
+        stroke-dashoffset: var(--offset);
+    }
+}
+
 .incorrectBox, .correctBox, .totalBox, .successBox {
     display: flex;
     flex-direction: column;
@@ -22,11 +53,14 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
+    animation: slideInLeft 0.5s ease-out forwards;
+    opacity: 0;
 }
 
 .incorrectBox {
     background: rgba(220, 53, 69, 0.15);
     border: 2px solid rgba(220, 53, 69, 0.3);
+    animation-delay: 0.1s;
 }
 
 .incorrectBox:hover {
@@ -37,6 +71,7 @@
 .correctBox {
     background: rgba(40, 167, 69, 0.15);
     border: 2px solid rgba(40, 167, 69, 0.3);
+    animation-delay: 0.2s;
 }
 
 .correctBox:hover {
@@ -47,6 +82,7 @@
 .totalBox {
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.3);
+    animation-delay: 0.3s;
 }
 
 .totalBox:hover {
@@ -58,6 +94,8 @@
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 1rem;
+    animation: scaleIn 0.5s ease-out 0.4s forwards;
+    opacity: 0;
 }
 
 .successBox:hover {
@@ -110,7 +148,7 @@
 
 .circleIndicator {
     stroke: #4CAF50;
-    transition: stroke-dashoffset 0.6s ease;
+    animation: drawCircle 1s ease-out forwards;
 }
 
 .circleText {
@@ -118,6 +156,8 @@
     font-size: 24px;
     font-weight: bold;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: scaleIn 0.3s ease-out 1s forwards;
 }
 
 @keyframes glow {
