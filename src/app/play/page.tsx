@@ -192,6 +192,7 @@ export default function Play() {
                         onAnswer={handleAnswer}
                         isAnswered={isAnswered}
                         isLoading={gameState?.loading}
+                        isVerifying={gameState.isVerifying}
                     />
 
                 {gameState.feedback && (

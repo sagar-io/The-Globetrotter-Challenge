@@ -24,6 +24,7 @@ export interface GameState {
         trivia?: string;
         correctAnswer: { city: string; country: string } | null;
     } | null;
+    isVerifying: boolean;
     score: {
         correct: number;
         incorrect: number;

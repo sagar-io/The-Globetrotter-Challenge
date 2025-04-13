@@ -76,7 +76,7 @@ export function QuestionCard({
                             disabled={isAnswered || isVerifying}
                         >
                             {isVerifyingThis ? (
-                                <span className={styles.verifyingText}>Verifying...</span>
+                                <span className={styles.verifyingText}>Verifying</span>
                             ) : (
                                 <>📍 {option.city}, {option.country}</>
                             )}

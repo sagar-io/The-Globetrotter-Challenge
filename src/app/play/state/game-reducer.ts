@@ -6,6 +6,7 @@ export const initialGameState: GameState = {
     currentQuestion: null,
     selectedAnswer: null,
     feedback: null,
+    isVerifying: false,
     score: {
         correct: 0,
         incorrect: 0,
@@ -42,13 +43,15 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         case 'SELECT_ANSWER':
             return {
                 ...state,
-                selectedAnswer: action.payload
+                selectedAnswer: action.payload,
+                isVerifying: true
             };
 
         case 'VERIFY_ANSWER_SUCCESS':
             return {
                 ...state,
                 feedback: action.payload,
+                isVerifying: false,
                 score: {
                     ...state.score,
                     correct: action.payload.correct ? state.score.correct + 1 : state.score.correct,
@@ -62,7 +65,8 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
                 ...state,
                 currentQuestion: null,
                 selectedAnswer: null,
-                feedback: null
+                feedback: null,
+                isVerifying: false
             };
 
         case 'SYNC_USER_SCORE':
