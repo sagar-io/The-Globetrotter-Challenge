@@ -17,6 +17,7 @@
         opacity: 0;
         transform: translateX(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -28,6 +29,7 @@
         opacity: 0;
         transform: scale(0.8);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -38,12 +40,16 @@
     from {
         stroke-dashoffset: var(--circumference);
     }
+
     to {
         stroke-dashoffset: var(--offset);
     }
 }
 
-.incorrectBox, .correctBox, .totalBox, .successBox {
+.incorrectBox,
+.correctBox,
+.totalBox,
+.successBox {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -164,9 +170,11 @@
     0% {
         filter: drop-shadow(0 0 2px rgba(76, 175, 80, 0.5));
     }
+
     50% {
         filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.8));
     }
+
     100% {
         filter: drop-shadow(0 0 2px rgba(76, 175, 80, 0.5));
     }
@@ -174,4 +182,55 @@
 
 .circleIndicator {
     animation: glow 2s infinite;
-} 
+}
+
+
+@media (max-width: 800px) {
+    .scoreBoxes {
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: space-around;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .scoreCard {
+        margin-right: unset;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .scoreNumber {
+        font-size: 1.4rem;
+    }
+
+    .scoreLabel {
+        font-size: 0.70rem;
+    }
+
+    .totalScore {
+        font-size: 1.2rem;
+        font-weight: bold;
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .totalLabel {
+        font-size: 0.70rem;
+    }
+
+    .circleText {
+        font-size: 1.1rem;
+    }
+
+    .incorrectBox,
+    .correctBox,
+    .totalBox {
+        width: fit-content;
+    }
+
+    .successBox {
+        display: none;
+    }
+}

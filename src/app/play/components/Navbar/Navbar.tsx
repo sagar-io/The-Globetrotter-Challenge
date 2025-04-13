@@ -41,6 +41,7 @@ export function Navbar({ score }: NavbarProps) {
             <div className={styles.centerSection}>
                 <Link href="/" className={styles.logoLink}>
                     <Image
+                        className={styles.logoImage}
                         src="/images/globe.svg"
                         alt="GlobeTrotter Logo"
                         width={50}

@@ -132,12 +132,41 @@
 }
 
 @media (max-width: 768px) {
+    .logoText {
+        font-size: 2rem;
+    }
+
     .navbar {
         padding: 0 1rem;
     }
 
     .challengeButton {
         padding: 0.6rem 1rem;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        margin-left: 1rem;
+    }
+
+    .logoImage {
+        width: 2.6rem;
+    }
+}
+
+@media (max-width: 460px) {
+    .logoText {
+        font-size: 1.4rem;
+    }
+
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .challengeButton {
+        padding: 0.6rem 1rem;
+        font-size: 0.6rem;
+        margin-left: 0.5rem;
+    }
+
+    .logoImage {
+        width: 1.6rem;
     }
 }

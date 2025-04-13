@@ -223,3 +223,21 @@
     66% { content: '...'; }
     100% { content: '.'; }
 } 
+
+@media (max-width: 1200px) {
+    .questionCard {
+        margin-left: 0;
+  }
+}
+
+@media (max-width: 468px) {
+    .questionCard {
+        padding: 0.8rem;
+        margin: 0.5rem;
+        width: calc(100%);
+    }
+
+    .clue h3 {
+        font-size: 1.1rem;
+    }
+}
