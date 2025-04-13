@@ -123,6 +123,45 @@
     }
 }
 
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, 
+        var(--bg-secondary) 0%, 
+        var(--bg-card) 50%, 
+        var(--bg-secondary) 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+}
+
+.skeletonTitle {
+    composes: skeleton;
+    height: 2.5rem;
+    width: 60%;
+    margin: 0 auto 2rem;
+    border-radius: var(--border-radius);
+}
+
+.skeletonClue {
+    composes: skeleton;
+    height: 3rem;
+    margin: 1rem 0;
+    border-radius: var(--border-radius);
+}
+
+.skeletonOption {
+    composes: skeleton;
+    height: 3.5rem;
+    border-radius: var(--border-radius);
+}
+
 @media (max-width: 768px) {
     .questionCard {
         padding: 1.5rem;

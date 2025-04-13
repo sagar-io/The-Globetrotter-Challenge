@@ -2,7 +2,6 @@
 
 import cn from 'classnames';
 import styles from './QuestionCard.module.css';
-import Image from 'next/image';
 
 interface QuestionCardProps {
     clues: string[];
@@ -25,17 +24,17 @@ export function QuestionCard({
 }: QuestionCardProps) {
     if (isLoading) {
         return (
-            <div className={styles.container}>
-                <div className={styles.loadingContainer}>
-                    <Image
-                        src="/images/map.svg"
-                        alt="Loading..."
-                        width={100}
-                        height={100}
-                        className={styles.loadingImage}
-                        priority
-                    />
-                    <span className={styles.loadingText}>Loading next question...</span>
+            <div className={styles.questionCard}>
+                <div className={styles.skeletonTitle} />
+                <div>
+                    <div className={styles.skeletonClue} />
+                    <div className={styles.skeletonClue} />
+                </div>
+                <div className={styles.optionsGrid}>
+                    <div className={styles.skeletonOption} />
+                    <div className={styles.skeletonOption} />
+                    <div className={styles.skeletonOption} />
+                    <div className={styles.skeletonOption} />
                 </div>
             </div>
         );

@@ -161,6 +161,7 @@ export default function Play() {
         fetchQuestion();
     }, []);
 
+    console.log("gameState my", gameState.loading);
     const isAnswered = Boolean(gameState.selectedAnswer);
 
     return (
@@ -183,17 +184,15 @@ export default function Play() {
             />
             
             <main className={styles.gameContainer}>
-                {gameState.currentQuestion && (
                     <QuestionCard
-                        clues={gameState.currentQuestion.clues}
-                        options={gameState.currentQuestion.options}
-                        selectedAnswer={gameState.selectedAnswer}
-                        feedback={gameState.feedback}
+                        clues={gameState?.currentQuestion?.clues || []}
+                        options={gameState?.currentQuestion?.options || []}
+                        selectedAnswer={gameState?.selectedAnswer}
+                        feedback={gameState?.feedback}
                         onAnswer={handleAnswer}
                         isAnswered={isAnswered}
-                        isLoading={gameState.loading}
+                        isLoading={gameState?.loading}
                     />
-                )}
 
                 {gameState.feedback && (
                     <FeedbackPanel

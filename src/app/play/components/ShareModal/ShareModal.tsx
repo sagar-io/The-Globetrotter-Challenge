@@ -19,7 +19,12 @@ export function ShareModal({ onClose, username, score }: ShareModalProps) {
     const imageUrl = `${baseUrl}/api/og?username=${encodeURIComponent(username)}&correct=${score.correct}&total=${score.total}`;
     const message = `🎯 ${username} scored ${score.correct}/${score.total} in GlobeTrotter!\nCan you beat their score?\n\n👉 Play here: ${gameLink}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-    console.log("imageUrl", imageUrl);
+    
+    console.log("Debug Share Modal:");
+    console.log("Base URL:", baseUrl);
+    console.log("Image URL:", imageUrl);
+    console.log("Environment:", process.env.NODE_ENV);
+    
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
