@@ -66,11 +66,7 @@ export function RegistrationModal({ onClose, onSuccess, currentScore }: Registra
                 
                 <div className={styles.content}>
                     <h2>Register to Challenge Friends</h2>
-                    <p>Choose a username to save your progress and challenge friends!</p>
-                    
-                    <div className={styles.scorePreview}>
-                        <p>Current Score: {currentScore.correct}/{currentScore.total}</p>
-                    </div>
+                    <p>Choose a username to start saving your progress and challenge friends!</p>
 
                     <form onSubmit={handleSubmit}>
                         <div className={styles.inputGroup}>

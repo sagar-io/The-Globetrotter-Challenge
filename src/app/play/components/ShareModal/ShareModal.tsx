@@ -14,7 +14,6 @@ interface ShareModalProps {
         incorrect: number;
     };
 }
-
 export function ShareModal({ onClose, username, score }: ShareModalProps) {
     const [isLoading, setIsLoading] = useState(false);
     const [challengeId, setChallengeId] = useState<string | null>(null);
