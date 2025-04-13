@@ -7,7 +7,6 @@ export async function GET(request: Request) {
         const { searchParams } = new URL(request.url);
         const username = searchParams.get('username') || 'Anonymous';
         const correct = parseInt(searchParams.get('correct') || '0');
-        const total = parseInt(searchParams.get('total') || '0');
 
         return new ImageResponse(
             (
