@@ -11,6 +11,7 @@ interface QuestionCardProps {
     onAnswer: (city: string, country: string) => void;
     isAnswered: boolean;
     isLoading: boolean;
+    isVerifying: boolean;
 }
 
 export function QuestionCard({ 
@@ -20,7 +21,8 @@ export function QuestionCard({
     feedback, 
     onAnswer, 
     isAnswered,
-    isLoading
+    isLoading,
+    isVerifying
 }: QuestionCardProps) {
     if (isLoading) {
         return (
@@ -57,21 +59,27 @@ export function QuestionCard({
                     const isSelected = option.city === selectedAnswer?.city && 
                                      option.country === selectedAnswer?.country;
                     const isCorrect = feedback?.correct;
-                    const isIncorrect = !isCorrect && isSelected;
+                    const isIncorrect = !isCorrect && isSelected && !isVerifying && feedback !== null;
                     const isCorrectAnswer = option.city === feedback?.correctAnswer?.city &&
                                           option.country === feedback?.correctAnswer?.country;
+                    const isVerifyingThis = isVerifying && isSelected;
 
                     return (
                         <button
                             key={id}
                             className={cn(styles.optionButton, {
                                 [styles.incorrectAnswer]: isIncorrect,
-                                [styles.correctAnswer]: isCorrectAnswer
+                                [styles.correctAnswer]: isCorrectAnswer,
+                                [styles.verifying]: isVerifyingThis
                             })}
                             onClick={() => onAnswer(option.city, option.country)}
-                            disabled={isAnswered}
+                            disabled={isAnswered || isVerifying}
                         >
-                            📍 {option.city}, {option.country}
+                            {isVerifyingThis ? (
+                                <span className={styles.verifyingText}>Verifying...</span>
+                            ) : (
+                                <>📍 {option.city}, {option.country}</>
+                            )}
                         </button>
                     );
                 })}
