@@ -27,20 +27,26 @@ Welcome to Globetrotter, an engaging full-stack web application that challenges 
 ## 🚀 Tech Stack
 
 - **Frontend**:
-  - Next.js 15 with App Router
-  - React 19
-  - TypeScript for type safety
-  - Tailwind CSS for styling
+  - `Next.js 15` - For performance, inbuilt API routes, SEO and optimal developer experience
+  - `React 19` - For building interactive user interfaces
+  - `TypeScript` - For type safety and better developer experience
 
 - **Backend**:
-  - Next.js API Routes
+  - `Next.js API Routes` - For serverless API endpoints with seamless frontend integration
 
-- **DataBase**:
-  - MongoDB
+- **Database**:
+  - `MongoDB` - For flexible, document-based data storage
+
+- **Additional Libraries**:
+  - `react-toastify` - For elegant toast notifications
+  - `react-confetti` - For celebratory animations on correct answers
+  - `lucide-react` - For beautiful, consistent icons across the app
+  - `classnames` - For conditional CSS class management
+  - `eslint` - For code quality and consistency enforcement
 
 - **Infrastructure**:
-  - Vercel for deployment
-  - Mongodb hosted on Atlas
+  - `Vercel` - For automated deployments and serverless hosting
+  - `MongoDB Atlas` - For managed, scalable database hosting
 
 ## 🛠️ Setup Instructions
 
