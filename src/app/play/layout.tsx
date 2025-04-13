@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
             };
         }
 
-        const imageUrl = `/api/og?username=${encodeURIComponent(challengeBy)}&correct=${user.totalCorrect}&total=${user.totalQuestions}`;
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://the-globetrotter-game.vercel.app';
+        const imageUrl = `${baseUrl}/api/og?username=${encodeURIComponent(challengeBy)}&correct=${user.totalCorrect}&total=${user.totalQuestions}`;
 
         return {
             title: `${challengeBy}'s GlobeTrotter Challenge`,

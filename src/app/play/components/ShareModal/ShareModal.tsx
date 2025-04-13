@@ -14,7 +14,7 @@ interface ShareModalProps {
 }
 
 export function ShareModal({ onClose, username, score }: ShareModalProps) {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `https://${window.location.host}`;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://the-globetrotter-game.vercel.app';
     const gameLink = `${baseUrl}/play?challengeBy=${encodeURIComponent(username)}`;
     const imageUrl = `${baseUrl}/api/og?username=${encodeURIComponent(username)}&correct=${score.correct}&total=${score.total}`;
     const message = `🎯 ${username} scored ${score.correct}/${score.total} in GlobeTrotter!\nCan you beat their score?\n\n👉 Play here: ${gameLink}`;
