@@ -1,6 +1,6 @@
 'use client';
 
-import { useReducer, useEffect, useState } from 'react';
+import { useReducer, useEffect, useState, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import styles from './play.module.css';
 import ReactConfetti from 'react-confetti';
@@ -11,12 +11,16 @@ import { FeedbackPanel } from './components/Feedback/FeedbackPanel';
 import { ScoreCard } from './components/ScoreCard/ScoreCard';
 import { Navbar } from './components/Navbar/Navbar';
 import { useUser } from '../contexts/UserContext';
+import Timer from './components/Timer/Timer';
+import TimeUp from './components/TimeUp/TimeUp';
 
 interface ChallengeData {
     createdBy: string;
     challengerScore: number;
     challengerTotal: number;
 }
+
+const TOTAL_TIME = 15;
 
 export default function Play() {
     const [gameState, dispatch] = useReducer(gameReducer, initialGameState);
@@ -25,7 +29,30 @@ export default function Play() {
     const { user } = useUser();
     const searchParams = useSearchParams();
     const challengeId = searchParams.get('challengeBy');
-    
+    const [time, setTime] = useState(TOTAL_TIME);
+    const [showBlockPopup, setShowBlockPopup] = useState(false);
+    const timer = useRef<NodeJS.Timeout>(0);
+    const showStreak = useRef(false);
+    const [showFriendInvite, setshowFriendInvite] = useState(false)
+
+
+    useEffect(() => {
+        if(!gameState.loading) {
+            timer.current = setInterval(() => {
+                if(time > 0)
+                setTime(prev => prev - 1)
+            }, 1000);
+            if(time < 5) {
+                setShowBlockPopup(true);
+            }
+            if(time === 0) {
+                clearInterval(timer);
+                handleNextQuestion();
+            }
+        }
+        return () => clearInterval(timer);
+    }, [gameState.loading, time])
+
     useEffect(() => {
         const loadChallenge = async () => {
             if (!challengeId) return;
@@ -79,9 +106,34 @@ export default function Play() {
             console.error('Failed to fetch question:', error);
         }
     };
-
+    console.log("gameState.consecutiveCorrectQues", gameState.consecutiveCorrectQues)
+    if(!showStreak.current && gameState.consecutiveCorrectQues >= 3) {
+        const id = toast.info(`Streak Achieved !${gameState.consecutiveCorrectQues / 3}`)
+        toast.pause({id});
+        showStreak.current = true;
+    }
+    clearInterval(timer.current);
     const handleAnswer = async (city: string, country: string) => {
         if (gameState.selectedAnswer || !gameState.currentQuestion) return;
+        let score;
+
+      
+
+        if(time > 10) {
+            score = 10;
+        } else if(time > 5) {
+            score = 5;
+        } else {
+            score = 0;
+        }
+
+        if(gameState.consecutiveCorrectQues >= 3) {
+            score+=10;
+        } 
+
+        if(gameState.consecutiveCorrectQues >= 5) {
+            setshowFriendInvite(true);
+        }
 
         const answer = { city, country };
         dispatch({ type: 'SELECT_ANSWER', payload: answer });
@@ -104,7 +156,8 @@ export default function Play() {
                     correct: result.correct,
                     funFact: result.funFact || '',
                     trivia: result.trivia || '',
-                    correctAnswer: result.correctAnswer || null
+                    correctAnswer: result.correctAnswer || null,
+                    increaseScore: score
                 }
             });
 
@@ -152,6 +205,8 @@ export default function Play() {
         dispatch({ type: 'RESET_QUESTION' });
         setShowConfetti(false);
         fetchQuestion();
+        setTime(TOTAL_TIME);
+        setShowBlockPopup(false);
     };
 
     useEffect(() => {
@@ -180,6 +235,8 @@ export default function Play() {
             />
             
             <main className={styles.gameContainer}>
+            <Timer time={time} />
+
                     <QuestionCard
                         clues={gameState?.currentQuestion?.clues || []}
                         options={gameState?.currentQuestion?.options || []}
@@ -198,7 +255,10 @@ export default function Play() {
                     />
                 )}
             </main>
-            <ToastContainer />
+            <ToastContainer autoClose={false} />
+            {showBlockPopup && <TimeUp onClose={() => setShowBlockPopup(false)}/>}
+            {showFriendInvite && <p>I have hit a high streak, join me for a challenging game 🔥”
+                </p>}
         </div>
     );
 }

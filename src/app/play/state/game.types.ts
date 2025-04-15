@@ -30,6 +30,7 @@ export interface GameState {
         incorrect: number;
         total: number;
     };
+    consecutiveCorrectQues: number
 }
 
 export type GameAction =
@@ -37,6 +38,6 @@ export type GameAction =
     | { type: 'LOAD_QUESTION_ERROR' }
     | { type: 'LOAD_QUESTION_SUCCESS'; payload: GameState['currentQuestion'] }
     | { type: 'SELECT_ANSWER'; payload: { city: string; country: string } }
-    | { type: 'VERIFY_ANSWER_SUCCESS'; payload: { correct: boolean; funFact?: string; trivia?: string; correctAnswer: { city: string; country: string } | null } }
+    | { type: 'VERIFY_ANSWER_SUCCESS'; payload: {consecutiveCorrectQues: number; correct: boolean; funFact?: string; trivia?: string; correctAnswer: { city: string; country: string } | null } }
     | { type: 'RESET_QUESTION' }
     | { type: 'SYNC_USER_SCORE'; payload: { totalCorrect: number; totalQuestions: number } }; 

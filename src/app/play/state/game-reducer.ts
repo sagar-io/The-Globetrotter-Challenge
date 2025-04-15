@@ -11,7 +11,8 @@ export const initialGameState: GameState = {
         correct: 0,
         incorrect: 0,
         total: 0
-    }
+    },
+    consecutiveCorrectQues: 0,
 };
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
@@ -52,9 +53,10 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
                 ...state,
                 feedback: action.payload,
                 isVerifying: false,
+                consecutiveCorrectQues: action.payload.correct ? state.consecutiveCorrectQues + 1: 0,
                 score: {
                     ...state.score,
-                    correct: action.payload.correct ? state.score.correct + 1 : state.score.correct,
+                    correct: action.payload.correct ? state.score.correct + action.payload.increaseScore : state.score.correct,
                     incorrect: !action.payload.correct ? state.score.incorrect + 1 : state.score.incorrect,
                     total: state.score.total + 1
                 }
